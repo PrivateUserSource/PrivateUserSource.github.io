@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const apiUrl = 'https://api.fera.dev';
+    const apiUrl = 'https://us2.bot-hosting.net:20039/';
 
     visitCountElement.textContent = 'Loading Visits...';
 
