@@ -1,0 +1,113 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    color: #fff;
+}
+
+#stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, #2c3e50, #000000);
+    overflow: hidden;
+}
+
+#content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    padding: 20px;
+}
+
+#profile {
+    margin-top: 20px;
+}
+
+#profilePicture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 0px solid #ffffff;
+    object-fit: cover;
+}
+
+#profileTitle {
+    font-size: 2em;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#buttons {
+    margin-top: 30px;
+    opacity: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 650px;
+    height: 10px;
+    margin: 10px 0;
+    padding: 15px;
+    font-size: 1.2em;
+    color: #ffffff;
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
+}
+
+.button i {
+    margin-right: 8px;
+}
+
+.button:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: scale(1.1);
+}
+
+#musicToggle {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+#toggleMusic {
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5em;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#toggleMusic:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.star {
+    position: absolute;
+    background-color: white;
+    border-radius: 50%;
+    width: 2px;
+    height: 2px;
+    opacity: 0.5;
+}
