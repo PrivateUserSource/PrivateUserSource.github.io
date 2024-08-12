@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const visitCountElement = document.getElementById('visitCount');
     const backgroundMusic = document.getElementById('backgroundMusic');
     const toggleMusicButton = document.getElementById('toggleMusic');
+    const disclaimerText = document.getElementById('disclaimer');
     let musicPlaying = false;
 
     for (let i = 0; i < starCount; i++) {
@@ -71,6 +72,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const apiUrl = 'https://api.fera.dev';
 
     visitCountElement.textContent = 'Loading Visits...';
+    disclaimerText.textContent = 'Loading Disclaimer...';
+
+    fetch(`${apiUrl}/disclaimer`)
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.visitCount !== "null") {
+            disclaimerText.textContent = `${data.visitCount}`;
+        } else {
+            disclaimerText.style.display = 'none';
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching disclaimer:', error);
+        disclaimerText.style.display = 'none';
+    });
+
 
     fetch(`${apiUrl}/visit-count`)
     .then(response => {
