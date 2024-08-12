@@ -90,13 +90,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
    // Fetch IP address and increment visit count
-   fetch('https://api.ipify.org?format=json')
-   .then(response => response.json())
-   .then(data => {
-       const ipAddress = data.ip;
-       return fetch(`${apiUrl}/increment-visit/${ipAddress}`, { method: 'POST' });
-   })
-   .catch(error => {
-       console.error('Error incrementing visit count:', error);
-   });
+  fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+        let ipAddress = data.ip;
+        
+        // Function to extract IPv4 address from IPv6 if necessary
+        const extractIPv4FromIPv6 = (ip) => {
+            // Check if the address starts with '::ffff:'
+            if (ip.startsWith('::ffff:')) {
+                return ip.slice(7); // Remove the '::ffff:' prefix
+            }
+            return ip; // Return the IP as is if it's already IPv4
+        };
+        
+        // Extract the IPv4 address if needed
+        ipAddress = extractIPv4FromIPv6(ipAddress);
+
+        // Make the POST request with the cleaned IPv4 address
+        return fetch(`${apiUrl}/increment-visit/${ipAddress}`, { method: 'POST' });
+    })
+    .catch(error => {
+        console.error('Error incrementing visit count:', error);
+    });
 });
