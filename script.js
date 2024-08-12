@@ -68,24 +68,26 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const apiUrl = 'https://api.fera.dev';
+    const apiUrl = 'http://us2.bot-hosting.net:20039';
 
     visitCountElement.textContent = 'Loading Visits...';
 
     fetch(`${apiUrl}/visit-count`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
-            }
-            return response.json();
-        })
-        .then(data => {
-            visitCountElement.textContent = `Visits: ${data.visitCount}`;
-        })
-        .catch(error => {
-            console.error('Error fetching visit count:', error);
-            visitCountElement.textContent = 'Error retrieving visit count';
-        });
+    .then(response => {
+        console.log('Response status:', response.status); // Log status
+        if (!response.ok) {
+            throw new Error(`Network response was not ok. Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Response data:', data); // Log data to inspect it
+        visitCountElement.textContent = `Visits: ${data.visitCount}`;
+    })
+    .catch(error => {
+        console.error('Error fetching visit count:', error);
+        visitCountElement.textContent = 'Error retrieving visit count';
+    });
 
     fetch(`${apiUrl}/increment-visit`, { method: 'POST' })
         .catch(error => {
