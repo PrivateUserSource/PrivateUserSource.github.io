@@ -70,10 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const apiUrl = 'https://api.fera.dev';
 
-    // Fetch the visit count from the server
-    visitCountElement.textContent = `Loading Visits..`
+    visitCountElement.textContent = 'Loading Visits...';
+
     fetch(`${apiUrl}/visit-count`)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json();
+        })
         .then(data => {
             visitCountElement.textContent = `Visits: ${data.visitCount}`;
         })
@@ -82,7 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
             visitCountElement.textContent = 'Error retrieving visit count';
         });
 
-    // Increment the visit count
     fetch(`${apiUrl}/increment-visit`, { method: 'POST' })
         .catch(error => {
             console.error('Error incrementing visit count:', error);
