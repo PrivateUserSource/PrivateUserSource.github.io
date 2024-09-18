@@ -4,41 +4,164 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PrivateUser</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.5.2/css/all.css">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: none;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://api.fera.dev/cdn/getfile/PrivateUserSiteBackground.jpg');
+            background-size: cover;
+            background-position: center;
+            filter: blur(15px);
+            z-index: -5;
+        }
+
+        .profile-card {
+            width: 600px;
+            height: 300px;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #fff;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: none;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-username {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ff00ff;
+            margin-top: 10px;
+        }
+
+        .profile-bio {
+            font-size: 18px;
+            color: #ccc;
+        }
+
+        .profile-activity {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .activity-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: none;
+        }
+
+        .activity-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .activity-info {
+            margin-left: 10px;
+        }
+
+        .activity-username {
+            font-size: 18px;
+            color: #ff00ff;
+            
+            align-items: center;
+        }
+
+        .activity-status {
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        .viewers {
+            display: flex;
+            align-items: center;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .eye-icon {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+        }
+
+        .viewer-count {
+            font-size: 14px;
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
-    <div id="stars"></div>
-    <div id="content">
-        <div id="profile">
-            <img src="https://images-ext-1.discordapp.net/external/xgfp_B0XSUWj_1zmCYsdEETgQu031r_g_5guR7G4Bto/https/cdn.discordapp.com/avatars/917699408374677504/289d53a5de5b82de63061b059c571ebe.png?format=webp&quality=lossless" alt="Profile Picture" id="profilePicture">
-            <div id="profileTitle">PrivateUser</div>
+
+    <div class="profile-card">
+        <div class="profile-image">
+            <img src="https://media.discordapp.net/attachments/1284836682243375135/1286045944818962483/c23cb2e01d8b49fb0d9fccf909b9c032.png?ex=66ec7b1e&is=66eb299e&hm=43328fd5b56a77e71fb0161510e1b336cebcccfe98d792c9a01e08fabbdd0345&=&format=webp&quality=lossless&width=350&height=350" alt="User Image">
         </div>
-        <div id="buttons">
-            <a href="https://www.tiktok.com/@fera.ogfn" class="button" target="_blank">
-                <i class="fab fa-tiktok"></i> TikTok
-            </a>
-            <a href="https://www.youtube.com/@Kenjikeuhh" class="button" target="_blank">
-                <i class="fab fa-youtube"></i> YouTube
-            </a>
-            <a href="https://discord.gg/2K3aFTuhbD" class="button" target="_blank">
-                <i class="fab fa-discord"></i> Discord
-            </a>
-            <a href="https://github.com/PrivateUserSource" class="button" target="_blank">
-                <i class="fab fa-github"></i> GitHub
-            </a>
+        <div class="profile-username">PrivateUser</div>
+        <div class="profile-bio">14yr old Game Developer & Backend Engineer</div>
+        <div class="profile-activity">
+            <div class="activity-image">
+                <img src="https://media.discordapp.net/attachments/1284836682243375135/1286045944818962483/c23cb2e01d8b49fb0d9fccf909b9c032.png?ex=66ec7b1e&is=66eb299e&hm=43328fd5b56a77e71fb0161510e1b336cebcccfe98d792c9a01e08fabbdd0345&=&format=webp&quality=lossless&width=350&height=350" alt="Activity Image">
+            </div>
+            <div class="activity-info">
+                <div class="activity-username">PrivateUser</div>
+                <div class="activity-status">Thanks for visiting my site, it means alot to me. </div>
+                <div class="activity-status">always stay positive <3</div>
+            </div>
         </div>
-        <a href='http://www.freevisitorcounters.com'>freevisitorcounters's Website</a>
-        <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=e22af7348f517b51691376d679ac443d74084ff9'></script>
-        <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1220750/t/11"></script>
+        <div class="viewers">
+            <span class="viewer-count">if u see this dm me on discord saying "abc"</span>
+        </div>
     </div>
-    <div id="musicToggle">
-        <button id="toggleMusic">
-            <i class="fas fa-music"></i>
-        </button>
-    </div>
-    <audio id="backgroundMusic" src="https://github.com/PrivateUserSource/PrivateUserSource.github.io/raw/main/Lady%20Killers%20(Instrumental)%20-%20TikTok%20Version.mp3" loop></audio>
-    <div id="disclaimer">Disclaimer: This is a personal website. The content here is subject to change and may not be accurate.</div>
-    <script src="script.js"></script>
+
+    <script>
+        document.addEventListener('click', function() {
+            var music = new Audio('https://api.fera.dev/cdn/getfile/The%20Thrill.mp3');
+            music.autoplay = true;
+            music.loop = true;
+            music.play().catch(function(error) {
+                console.log('Autoplay was prevented:', error);
+            });
+            document.removeEventListener('click', arguments.callee);
+        });
+    </script>
+
 </body>
 </html>
