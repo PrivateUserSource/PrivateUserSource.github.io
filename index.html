@@ -4,165 +4,64 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PrivateUser</title>
+    <link rel="icon" href="df5a8e921506a614a52f4dfcc76e4fae.png" type="image/x-icon">
     <style>
-        body, html {
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
             margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow: hidden;
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: none;
+            background: linear-gradient(135deg, #333333, #1c1c1c);
+            font-family: Arial, sans-serif;
         }
-
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://api.fera.dev/cdn/getfile/PrivateUserSiteBackground.jpg');
-            background-size: cover;
-            background-position: center;
-            filter: blur(15px);
-            z-index: -5;
-        }
-
-        .profile-card {
-            width: 600px;
-            height: 300px;
-            background-color: rgba(0, 0, 0, 0.6);
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+        .profile-box {
+            width: 350px;
+            background: linear-gradient(135deg, rgba(255, 0, 0, 0.9), rgba(255, 99, 71, 0.8));
+            border-radius: 15px;
             padding: 20px;
-            color: #fff;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            z-index: 1;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .profile-image {
-            width: 100px;
-            height: 100px;
+        .profile-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            overflow: hidden;
-            border: none;
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: 100%;
+            margin-bottom: 15px;
             object-fit: cover;
+            border: 3px solid #fff;
         }
-
-        .profile-username {
-            font-size: 32px;
+        .profile-name {
+            font-size: 24px;
             font-weight: bold;
-            color: #ff00ff;
-            margin-top: 10px;
+            margin-bottom: 10px;
         }
-
-        .profile-bio {
-            font-size: 18px;
-            color: #ccc;
-        }
-
-        .profile-activity {
-            display: flex;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .activity-image {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: none;
-        }
-
-        .activity-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .activity-info {
-            margin-left: 10px;
-        }
-
-        .activity-username {
-            font-size: 18px;
-            color: #ff00ff;
-            
-            align-items: center;
-        }
-
-        .activity-status {
+        .profile-description {
             font-size: 16px;
-            color: #ccc;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
         }
-
-        .viewers {
-            display: flex;
-            align-items: center;
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-        }
-
-        .eye-icon {
-            width: 20px;
-            height: 20px;
-            margin-right: 5px;
-        }
-
-        .viewer-count {
+        .profile-message {
             font-size: 14px;
-            color: #fff;
+            color: #ffcc00;
+            margin-bottom: 25px;
         }
     </style>
 </head>
 <body>
 
-    <div class="profile-card">
-        <div class="profile-image">
-            <img src="https://api.fera.dev/cdn/getfile/PrivateUserPFP.png" alt="User Image">
-        </div>
-        <div class="profile-username">PrivateUser</div>
-        <div class="profile-bio">Game Developer & Backend Engineer</div>
-        <div class="profile-bio">discord.gg/rewindmp</div>
-        <div class="profile-activity">
-            <div class="activity-image">
-                <img src="https://api.fera.dev/cdn/getfile/PrivateUserPFP.png" alt="Activity Image">
-            </div>
-            <div class="activity-info">
-                <div class="activity-username">PrivateUser</div>
-                <div class="activity-status">You can make an amazing game, but you can't make a success.</div>
-            </div>
-        </div>
-        <div class="viewers">
-            <span class="viewer-count">im 2 steps ahead</span>
-        </div>
+    <div class="profile-box">
+        <img src="df5a8e921506a614a52f4dfcc76e4fae.png" alt="Profile Avatar" class="profile-avatar">
+        <h2 class="profile-name">PrivateUser</h2>
+        <p class="profile-description">Game Developer & Backend Engineer<br>discord.gg/rewindmp</p>
+        <p class="profile-message">"You can make an amazing game, but you can't make a success."</p>
     </div>
-
-    <script>
-        document.addEventListener('click', function() {
-            var music = new Audio('https://api.fera.dev/cdn/getfile/The%20Thrill.mp3');
-            music.autoplay = true;
-            music.loop = true;
-            music.volume = 0.3
-            music.play().catch(function(error) {
-                console.log('Autoplay was prevented:', error);
-            });
-            document.removeEventListener('click', arguments.callee);
-        });
-    </script>
 
 </body>
 </html>
