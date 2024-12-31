@@ -1,67 +1,326 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en"><head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrivateUser</title>
-    <link rel="icon" href="df5a8e921506a614a52f4dfcc76e4fae.png" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>VEXBOLTS MASSUNFOLLOW TIMES</title>
     <style>
         body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: url('https://vexbolts.us/background.jpg') no-repeat center center fixed;
+            background-size: cover;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #333333, #1c1c1c);
             font-family: Arial, sans-serif;
-        }
-        .profile-box {
-            width: 350px;
-            background: linear-gradient(135deg, rgba(255, 0, 0, 0.9), rgba(255, 99, 71, 0.8));
-            border-radius: 15px;
-            padding: 20px;
             color: white;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .profile-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+
+        .timer-container {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-sizing: border-box;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: rgb-frame 3s infinite;
         }
-        .profile-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-            object-fit: cover;
-            border: 3px solid #fff;
-        }
-        .profile-name {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        .profile-description {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.7);
+
+        h1 {
             margin-bottom: 20px;
+            font-size: 2rem;
         }
-        .profile-message {
-            font-size: 14px;
-            color: #ffcc00;
-            margin-bottom: 25px;
+
+        .timer {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            background: linear-gradient(90deg, rgba(255,0,0,0.8), rgba(0,255,0,0.8), rgba(0,0,255,0.8));
+            background-size: 300% 300%;
+            color: white;
+            text-shadow: 0 0 15px rgba(0,0,0,0.7);
+            animation: gradient-shift 3s infinite;
+            border: none;
+        }
+
+        .donation {
+            margin-top: 20px;
+            font-size: 1rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        .donation a {
+            color: #00ff00;
+            text-decoration: none;
+        }
+
+        .chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            max-width: 500px;
+            width: 500px;
+            background: rgba(0, 0, 0, 0.9);
+            border-radius: 10px;
+            display: none;
+            z-index: 1000;
+            padding: 20px;
+        }
+        .messages {
+            height: 500px;
+            overflow-y: auto;
+            border: 1px solid #333;
+            padding: 10px;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+        .message {
+            margin: 8px 0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+        .message.received {
+            background: #2f3136;
+            margin-right: auto;
+        }
+        .message.sent {
+            background: #007bff;
+            color: white;
+            margin-left: auto;
+        }
+        .message.system {
+            background: #ffd700;
+            color: black;
+            text-align: center;
+            margin: 8px auto;
+            font-size: 0.9em;
+            max-width: 90%;
+        }
+        .input-container {
+            display: flex;
+            gap: 10px;
+        }
+        #messageInput {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            font-size: 1em;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+        .chat-buttons {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 999;
+        }
+        #openChat, #closeChat {
+            padding: 10px 20px;
+            background: #7289da;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        #openChat:hover, #closeChat:hover {
+            background: #5b6eae;
+        }
+        #closeChat {
+            display: none;
+        }
+
+        @keyframes rgb-frame {
+            0% {
+                box-shadow: 0 0 15px 3px rgba(255, 0, 0, 0.7);
+            }
+            33% {
+                box-shadow: 0 0 15px 3px rgba(0, 255, 0, 0.7);
+            }
+            66% {
+                box-shadow: 0 0 15px 3px rgba(0, 0, 255, 0.7);
+            }
+            100% {
+                box-shadow: 0 0 15px 3px rgba(255, 0, 0, 0.7);
+            }
+        }
+
+        @keyframes gradient-shift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
         }
     </style>
 </head>
 <body>
-
-    <div class="profile-box">
-        <img src="df5a8e921506a614a52f4dfcc76e4fae.png" alt="Profile Avatar" class="profile-avatar">
-        <h2 class="profile-name">PrivateUser</h2>
-        <p class="profile-description">Game Developer & Backend Engineer<br>discord.gg/rewindmp</p>
-        <p class="profile-message">"You can make an amazing game, but you can't make a success."</p>
+    <div class="timer-container">
+        <h1>Countdown Timer ENDS to 31.12.2024 23:59 Berlin Time</h1>
+        <div class="timer" id="timer">0d 8h 47m 2s</div>
     </div>
 
-</body>
-</html>
+    <div class="donation">
+        <p>Update: Removed Timezones cuz it was false, unfollow when the above countown hits 0</p>
+        <p>my broke ass paid for the vexbolts domain only for leaving him in 2024</p>
+     <p>join official discord server: https://discord.gg/UfCfcBzdmK</p>    
+    <p>made by discord: santeszz -&gt; write me if you have questions ideas</p>
+
+    </div>
+
+    <div class="chat-container">
+        <div id="messages" class="messages"></div>
+        <div class="input-container">
+            <input type="text" id="messageInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script src="../scripts/website.js"></script>
+    <script>
+        const timerElement = document.getElementById('timer');
+
+        function calculateTimeLeft(targetDate) {
+            const now = new Date();
+            const diff = targetDate - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            return { days, hours, minutes, seconds, diff };
+        }
+
+        function updateTimer() {
+            const berlinTime = new Date("2024-12-31T22:59:59.999Z"); // 31.12.2024 23:59 Berlin Time
+
+            const { days, hours, minutes, seconds, diff } = calculateTimeLeft(berlinTime);
+
+            if (diff <= 0) {
+                timerElement.textContent = "The timer has expired!";
+                clearInterval(interval);
+            } else {
+                timerElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+            }
+        }
+
+        const interval = setInterval(updateTimer, 1000);
+        updateTimer();
+
+        function toggleChat(show) {
+            const chatContainer = document.querySelector('.chat-container');
+            
+            chatContainer.style.display = show ? 'block' : 'none';
+        }
+
+        toggleChat(true);
+        const messagesContainer = document.getElementById('messages');
+        const messageInput = document.getElementById('messageInput');
+        const chatContainer = document.querySelector('.chat-container');
+
+        let ws = null;
+        let reconnectAttempts = 0;
+        const maxReconnectAttempts = 5;
+
+        function connectWebSocket() {
+            ws = new WebSocket('wss://vexbolts.rewindmp.xyz/'); // i stg if my server closes on this shi ima kms
+
+            ws.onopen = () => {
+                displaySystemMessage('Connected to chat server');
+                reconnectAttempts = 0;
+            };
+
+            ws.onmessage = (event) => {
+                const message = JSON.parse(event.data);
+                displayMessage(message);
+            };
+
+            ws.onclose = () => {
+                displaySystemMessage('Disconnected from server');
+                
+                if (reconnectAttempts < maxReconnectAttempts) {
+                    reconnectAttempts++;
+                    setTimeout(() => {
+                        displaySystemMessage(`Attempting to reconnect (${reconnectAttempts}/${maxReconnectAttempts})...`);
+                        connectWebSocket();
+                    }, 3000);
+                } else {
+                    displaySystemMessage('Failed to reconnect, refresh thanks.');
+                }
+            };
+
+            ws.onerror = (error) => {
+                displaySystemMessage('The fucking websocket died');
+            };
+        }
+
+        function sendMessage() {
+            if (!messageInput.value.trim() || !ws || ws.readyState !== WebSocket.OPEN) return;
+
+            const messageData = {
+                type: 'message',
+                text: messageInput.value,
+                sender: 'User',
+                timestamp: new Date().toISOString()
+            };
+
+            ws.send(JSON.stringify(messageData));
+            messageInput.value = '';
+        }
+
+        function displayMessage(message) {
+            const messageElement = document.createElement('div');
+            messageElement.className = `message ${message.sender === 'User' ? 'sent' : 'received'}`;
+            
+            const time = new Date(message.timestamp).toLocaleTimeString();
+            messageElement.innerHTML = `
+                <div class="message-header">
+                    <span class="sender">${message.sender}</span>
+                    <span class="time">${time}</span>
+                </div>
+                <div class="message-content">${message.text}</div>
+            `;
+            
+            messagesContainer.appendChild(messageElement);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function displaySystemMessage(text) {
+            const messageElement = document.createElement('div');
+            messageElement.className = 'message system';
+            messageElement.innerHTML = `
+                <div class="message-content">
+                    <i>${text}</i>
+                </div>
+            `;
+            messagesContainer.appendChild(messageElement);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        messageInput?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        connectWebSocket();
+    </script>
+</body></html>
