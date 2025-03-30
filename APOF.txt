@@ -1,1 +1,3 @@
-[APOF_TRACK_DATA]
+{
+  TrackData: "Wow"
+}
