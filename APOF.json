@@ -2,7 +2,8 @@
   "TrackData": "Wow",
   "TrackList": [
     {
-      "Track1": 11.1
+      "TargetTime": 11.1,
+      "TargetTrack": "Track1"
     }
   ]
 }
