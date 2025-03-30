@@ -1,8 +1,7 @@
 {
   "TrackData": "Wow",
   "TrackList": [
-    {
-      "11.4": "Track1"
-    }
+    { "11.4": "Track1" },
+    { "20.5": "Track2" }
   ]
 }
